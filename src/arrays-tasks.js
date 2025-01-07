@@ -141,8 +141,10 @@ function getAverage(arr) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const number = arr[0].length;
+
+  return arr.every((item) => item.length === number);
 }
 
 /**
@@ -283,8 +285,8 @@ function createNDimensionalArray(/* n, size */) {
  *    flattenArray(['a', ['b', ['c', 'd'], 'e'], 'f']) => ['a', 'b', 'c', 'd', 'e', 'f']
  *    flattenArray([1, 2, 3, 4]) => [1, 2, 3, 4]
  */
-function flattenArray(/* nestedArray */) {
-  throw new Error('Not implemented');
+function flattenArray(nestedArray) {
+  return nestedArray.flat(Infinity);
 }
 
 /**
@@ -317,8 +319,11 @@ function selectMany(/* arr, childrenSelector */) {
  *   calculateBalance([ [ 10, 8 ], [ 1, 5 ] ])  => (10 - 8) + (1 - 5) = 2 + -4 = -2
  *   calculateBalance([]) => 0
  */
-function calculateBalance(/* arr */) {
-  throw new Error('Not implemented');
+function calculateBalance(arr) {
+  const result = arr
+    .map((item) => item[0] - item[1])
+    .reduce((accumulater, currentvalue) => accumulater + currentvalue, 0);
+  return result;
 }
 
 /**
@@ -349,8 +354,30 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const newArr = [];
+
+  if (len === 0) {
+    return newArr;
+  }
+
+  const arr = new Array(len).fill(1);
+
+  arr.reduce((acc, curr, index) => {
+    if (index === 0) {
+      newArr.push(acc);
+    }
+
+    if (index === arr.length - 1) {
+      return NaN;
+    }
+
+    const per = acc + 2;
+    newArr.push(per);
+    return per;
+  }, 1);
+
+  return newArr;
 }
 
 /**
@@ -381,8 +408,18 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  let result = 0;
+
+  arr.reduce((accumulator, currentValue) => {
+    if (!currentValue) {
+      result += 1;
+    }
+
+    return NaN;
+  }, result);
+
+  return result;
 }
 
 /**
@@ -418,8 +455,17 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const newArr = [];
+
+  numbers.map((item, index) => {
+    if (item % 2 !== 0) {
+      newArr.push(index);
+    }
+    return NaN;
+  });
+
+  return newArr;
 }
 
 /**
